@@ -1,0 +1,38 @@
+{
+	"compilerOptions": {
+		"jsx": "react",
+		"lib": ["ESNext", "DOM"],
+		"target": "ESNext",
+		"module": "ESNext",
+		
+		// Node module resolution
+		"moduleResolution": "node",
+		"verbatimModuleSyntax": true,
+		"esModuleInterop": true,
+		
+		// Emit options
+		"declaration": true,
+		"emitDeclarationOnly": false,
+		"rootDir": "./src",
+		"outDir": "./dist",
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true,
+		
+		// Best practices
+		"strict": true,
+		"skipLibCheck": true,
+		"noFallthroughCasesInSwitch": true,
+
+		// Some stricter flags (disabled by default)
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noPropertyAccessFromIndexSignature": true,
+
+		"baseUrl": ".",
+		"paths": {
+			"@captchahub/*": ["../*/dist"]
+		}
+	},
+	"include": ["src/**/*.ts", "src/**/*.tsx"],
+	"exclude": ["node_modules", "dist", "tests"]
+}
