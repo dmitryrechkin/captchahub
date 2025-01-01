@@ -25,6 +25,8 @@ The `getCaptchaScript` function can be used as follows:
 
 ```typescript
 import { getCaptchaScript } from '@captchahub/core';
+// Import the provider package to trigger self-registration
+import '@captchahub/turnstile';
 
 const config = {
     CAPTCHA_PROVIDER: 'turnstile',
@@ -32,7 +34,7 @@ const config = {
 };
 
 const CaptchaComponent = async () => {
-    const CaptchaScript = (await getCaptchaScript(config)) as React.FC;
+    const CaptchaScript = getCaptchaScript(config);
 
     return (
         <div>
@@ -49,6 +51,8 @@ The `getCaptchaFormElement` function can be used as follows:
 
 ```typescript
 import { getCaptchaFormElement } from '@captchahub/core';
+// Import the provider package to trigger self-registration
+import '@captchahub/turnstile';
 
 const config = {
     CAPTCHA_PROVIDER: 'turnstile',
@@ -56,7 +60,7 @@ const config = {
 };
 
 const CaptchaFormComponent = async () => {
-    const CaptchaFormElement = (await getCaptchaFormElement(config)) as React.FC;
+    const CaptchaFormElement = getCaptchaFormElement(config);
 
     return (
         <div>
@@ -73,6 +77,8 @@ The `verifyCaptcha` function can be used as follows:
 
 ```typescript
 import { verifyCaptcha } from '@captchahub/core';
+// Import the provider package to trigger self-registration
+import '@captchahub/turnstile';
 
 const config = {
     CAPTCHA_PROVIDER: 'turnstile',

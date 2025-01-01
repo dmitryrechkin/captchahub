@@ -30,8 +30,8 @@ const config = {
     // Additional provider-specific configuration can go here
 };
 
-const CaptchaComponent = async () => {
-    const CaptchaScript = (await getCaptchaScript(config)) as React.FC;
+const CaptchaComponent = () => {
+    const CaptchaScript = getCaptchaScript(config);
 
     return (
         <div>
@@ -54,8 +54,8 @@ const config = {
     // Additional provider-specific configuration can go here
 };
 
-const CaptchaFormComponent = async () => {
-    const CaptchaFormElement = (await getCaptchaFormElement(config)) as React.FC;
+const CaptchaFormComponent = () => {
+    const CaptchaFormElement = getCaptchaFormElement(config);
 
     return (
         <div>
@@ -94,9 +94,44 @@ if (isValid) {
 
 Configuration for the captcha provider can be defined in a configuration object passed to the factory when creating the captcha instance. The configuration object must include the `CAPTCHA_PROVIDER` property to specify which captcha provider to use. Additional properties may be required depending on the specific provider.
 
-## Extensibility
+### Adding New Providers
 
-The CaptchaHub Core package is designed to be extensible. You can create new captcha providers by implementing the `CaptchaInterface`. This allows you to add support for additional captcha services in the future.
+To add a new captcha provider, you can implement the `CaptchaInterface`. Here’s a brief example of how to implement a new provider:
+
+1. **Create a New Folder**: Create a new folder for your provider (e.g., `packages/myprovider`).
+2. **Implement the Interface**: Create a class that implements the `CaptchaInterface`. This class should handle the logic for verifying captchas and rendering the captcha elements.
+
+   Example:
+   ```typescript
+   import type { CaptchaInterface } from '@captchahub/core';
+
+   export class MyProviderCaptcha implements CaptchaInterface {
+       async verifyCaptcha(formFieldValues: Record<string, any>): Promise<boolean> {
+           // Implement the logic to verify the captcha
+       }
+
+       getCaptchaScript(): React.FC {
+           // Return the captcha script as a React component
+       }
+
+       getCaptchaFormElement(): React.FC {
+           // Return the captcha form element as a React component
+       }
+   }
+   ```
+
+3. **Self-Registering the Package**: To make your package self-registering, ensure your package registers the factory with the `CaptchaFactoryRegistry` and exports the factory class as the default export in `index.tsx`. For example:
+
+```typescript
+import { CaptchaFactoryRegistry } from '@captchahub/core';
+import { MyProviderCaptchaFactory } from './Factory';
+
+CaptchaFactoryRegistry.registerCaptchaFactory('my-provider', new MyProviderCaptchaFactory());
+
+// default export so that core factory can use it directly
+export default MyProviderCaptchaFactory;
+```
+
 
 ## Rationale
 

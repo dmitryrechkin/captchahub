@@ -25,14 +25,16 @@ The `getCaptchaScript` function can be used as follows:
 
 ```typescript
 import { getCaptchaScript } from '@captchahub/core';
+// Import the provider package to trigger self-registration
+import '@captchahub/recaptcha';
 
 const config = {
     CAPTCHA_PROVIDER: 'recaptcha',
     RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY, // Your ReCaptcha site key
 };
 
-const CaptchaComponent = async () => {
-    const CaptchaScript = (await getCaptchaScript(config)) as React.FC;
+const CaptchaComponent = () => {
+    const CaptchaScript = getCaptchaScript(config);
 
     return (
         <div>
@@ -49,6 +51,8 @@ The `getCaptchaFormElement` function can be used as follows:
 
 ```typescript
 import { getCaptchaFormElement } from '@captchahub/core';
+// Import the provider package to trigger self-registration
+import '@captchahub/recaptcha';
 
 const config = {
     CAPTCHA_PROVIDER: 'recaptcha',
@@ -56,7 +60,7 @@ const config = {
 };
 
 const CaptchaFormComponent = async () => {
-    const CaptchaFormElement = (await getCaptchaFormElement(config)) as React.FC;
+    const CaptchaFormElement = getCaptchaFormElement(config);
 
     return (
         <div>
@@ -73,6 +77,8 @@ The `verifyCaptcha` function can be used as follows:
 
 ```typescript
 import { verifyCaptcha } from '@captchahub/core';
+// Import the provider package to trigger self-registration
+import '@captchahub/recaptcha';
 
 const config = {
     CAPTCHA_PROVIDER: 'recaptcha',

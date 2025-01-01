@@ -1,6 +1,6 @@
 import type { CaptchaFactoryInterface, CaptchaInterface } from '@captchahub/core';
 import type { TypeHCaptchaConfig } from '../Type';
-import { HCaptcha } from '../Captcha/HCaptcha';
+import { HCaptcha } from '../Captcha';
 
 /**
  * Interface representing an captcha provider factory.
@@ -11,10 +11,10 @@ export class HCaptchaFactory implements CaptchaFactoryInterface<TypeHCaptchaConf
 	 * Creates an captcha based on the provided configuration.
 	 *
 	 * @param {TypeHCaptchaConfig} config - The configuration object for the captcha provider.
-	 * @returns {Promise<CaptchaInterface>} - An captcha instance.
+	 * @returns {CaptchaInterface} - An captcha instance.
 	 * @throws {Error} - Throws an error when requested provider captcha can't be created.
 	 */
-	public async create(config: TypeHCaptchaConfig): Promise<CaptchaInterface>
+	public create(config: TypeHCaptchaConfig): CaptchaInterface
 	{
 		return new HCaptcha(config);
 	}

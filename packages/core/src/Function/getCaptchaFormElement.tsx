@@ -5,7 +5,7 @@ import { CaptchaFactory } from '../Factory';
  * Gets the captcha form element for the provided configuration.
  *
  * @param {TypeBaseConfig} config - The configuration object for the captcha provider.
- * @returns {Promise<React.FC>} - The captcha form element.
+ * @returns {React.FC} - The captcha form element.
  */
-export const getCaptchaFormElement = async (config: TypeBaseConfig): Promise<React.FC> =>
-	(await (new CaptchaFactory()).create(config)).getCaptchaFormElement();
+export const getCaptchaFormElement = (config: TypeBaseConfig): React.FC =>
+	(new CaptchaFactory()).create(config).getCaptchaFormElement();

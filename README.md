@@ -58,8 +58,8 @@ const config = {
     // Additional provider-specific configuration can go here
 };
 
-const CaptchaComponent = async () => {
-    const CaptchaScript = (await getCaptchaScript(config)) as React.FC;
+const CaptchaComponent = () => {
+    const CaptchaScript = getCaptchaScript(config) as React.FC;
 
     return (
         <div>
@@ -82,8 +82,8 @@ const config = {
     // Additional provider-specific configuration can go here
 };
 
-const CaptchaFormComponent = async () => {
-    const CaptchaFormElement = (await getCaptchaFormElement(config)) as React.FC;
+const CaptchaFormComponent = () => {
+    const CaptchaFormElement = getCaptchaFormElement(config) as React.FC;
 
     return (
         <div>
@@ -121,10 +121,6 @@ if (isValid) {
 ### Configuration
 
 Configuration for the captcha provider can be defined in a configuration object passed to the factory when creating the captcha instance. The configuration object must include the `CAPTCHA_PROVIDER` property to specify which captcha provider to use. Additional properties may be required depending on the specific provider.
-
-## Extensibility
-
-The CaptchaHub is designed to be extensible. You can create new captcha providers by implementing the `CaptchaInterface`. This allows you to add support for additional captcha services in the future.
 
 ## Rationale
 

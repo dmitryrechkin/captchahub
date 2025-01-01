@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from 'vitest';
-import { verifyCaptcha } from '../src/Function/verifyCaptcha';
-import type { TypeBaseConfig } from '../src/Type/Types';
+import { verifyCaptcha } from '../../src/Function/verifyCaptcha';
+import type { TypeBaseConfig } from '../../src/Type/Types';
 
-vi.mock('../src/Factory', () => {
+vi.mock('../../src/Factory', () => {
 	return {
 		CaptchaFactory: vi.fn().mockImplementation(() => {
 			return {

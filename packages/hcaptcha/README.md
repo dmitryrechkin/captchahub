@@ -25,14 +25,16 @@ The `getCaptchaScript` function can be used as follows:
 
 ```typescript
 import { getCaptchaScript } from '@captchahub/core';
+// Import the provider package to trigger self-registration
+import '@captchahub/hcaptcha';
 
 const config = {
     CAPTCHA_PROVIDER: 'hcaptcha',
     HCAPTCHA_SITE_KEY: process.env.HCAPTCHA_SITE_KEY, // Your HCaptcha site key
 };
 
-const CaptchaComponent = async () => {
-    const CaptchaScript = (await getCaptchaScript(config)) as React.FC;
+const CaptchaComponent = () => {
+    const CaptchaScript = getCaptchaScript(config);
 
     return (
         <div>
@@ -49,14 +51,16 @@ The `getCaptchaFormElement` function can be used as follows:
 
 ```typescript
 import { getCaptchaFormElement } from '@captchahub/core';
+// Import the provider package to trigger self-registration
+import '@captchahub/hcaptcha';
 
 const config = {
     CAPTCHA_PROVIDER: 'hcaptcha',
     HCAPTCHA_SITE_KEY: process.env.HCAPTCHA_SITE_KEY, // Your HCaptcha site key
 };
 
-const CaptchaFormComponent = async () => {
-    const CaptchaFormElement = (await getCaptchaFormElement(config)) as React.FC;
+const CaptchaFormComponent = () => {
+    const CaptchaFormElement = getCaptchaFormElement(config);
 
     return (
         <div>
@@ -73,6 +77,8 @@ The `verifyCaptcha` function can be used as follows:
 
 ```typescript
 import { verifyCaptcha } from '@captchahub/core';
+// Import the provider package to trigger self-registration
+import '@captchahub/hcaptcha';
 
 const config = {
     CAPTCHA_PROVIDER: 'hcaptcha',
