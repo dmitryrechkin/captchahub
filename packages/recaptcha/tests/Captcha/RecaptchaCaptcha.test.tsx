@@ -35,6 +35,21 @@ describe('ReCaptcha Class', () => {
 		const scriptTag = container.querySelector('script');
 		expect(scriptTag).not.toBeNull();
 		expect(scriptTag?.src).toBe(`https://www.google.com/recaptcha/api.js?render=${config.RECAPTCHA_SITE_KEY}`);
+		expect(scriptTag?.hasAttribute('async')).toBe(true);
+		expect(scriptTag?.hasAttribute('defer')).toBe(true);
+	});
+
+	it('renders captcha script with custom attributes', () => {
+		const customAttributes = {
+			'data-astro-rerun': 'true',
+			'data-custom': 'value'
+		};
+		const CaptchaScript = recaptcha.getCaptchaScript(customAttributes);
+		const { container } = render(<CaptchaScript />);
+		const scriptTag = container.querySelector('script');
+		expect(scriptTag).not.toBeNull();
+		expect(scriptTag?.getAttribute('data-astro-rerun')).toBe('true');
+		expect(scriptTag?.getAttribute('data-custom')).toBe('value');
 	});
 
 	it('renders captcha form element correctly', () => {

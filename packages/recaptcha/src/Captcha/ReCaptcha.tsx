@@ -59,13 +59,22 @@ export class ReCaptcha implements CaptchaInterface
 
 	/**
 	 * Get captcha script
+	 * @param {Record<string, string>} [scriptAttributes] - Optional script attributes to add to the script tag
 	 * @returns {React.FC} - Returns captcha script
 	 */
-	public getCaptchaScript(): React.FC
+	public getCaptchaScript(scriptAttributes?: Record<string, string>): React.FC
 	{
-		return () => (
-			<script src={`https://www.google.com/recaptcha/api.js?render=${this.config.RECAPTCHA_SITE_KEY}`}  async defer />
-		);
+		return () =>
+		{
+			const scriptProps = {
+				src: `https://www.google.com/recaptcha/api.js?render=${this.config.RECAPTCHA_SITE_KEY}`,
+				async: true,
+				defer: true,
+				...scriptAttributes
+			};
+
+			return <script {...scriptProps} />;
+		};
 	}
 
 	/**

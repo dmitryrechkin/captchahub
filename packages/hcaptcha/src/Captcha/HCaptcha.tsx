@@ -54,13 +54,22 @@ export class HCaptcha implements CaptchaInterface
 
 	/**
 	 * Get captcha script
+	 * @param {Record<string, string>} [scriptAttributes] - Optional script attributes to add to the script tag
 	 * @returns {React.FC} - Returns captcha script
 	 */
-	public getCaptchaScript(): React.FC
+	public getCaptchaScript(scriptAttributes?: Record<string, string>): React.FC
 	{
-		return () => (
-			<script src="https://js.hcaptcha.com/1/api.js" async defer />
-		);
+		return () =>
+		{
+			const scriptProps = {
+				src: 'https://js.hcaptcha.com/1/api.js',
+				async: true,
+				defer: true,
+				...scriptAttributes
+			};
+
+			return <script {...scriptProps} />;
+		};
 	}
 
 	/**
