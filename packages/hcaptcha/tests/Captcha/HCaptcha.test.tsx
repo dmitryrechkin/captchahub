@@ -58,4 +58,18 @@ describe('HCaptcha Class', () => {
 		const inputTag = container.querySelector('input[type="hidden"]');
 		expect(inputTag).not.toBeNull();
 	});
+
+	it('renders captcha form element with custom script attributes', () => {
+		const customAttributes = {
+			'data-astro-rerun': 'true',
+			'data-custom': 'value'
+		};
+		const CaptchaFormElement = hcaptcha.getCaptchaFormElement(customAttributes);
+		const { container } = render(<CaptchaFormElement />);
+		const scriptTag = container.querySelector('script');
+		expect(scriptTag).not.toBeNull();
+		expect(scriptTag?.getAttribute('data-astro-rerun')).toBe('true');
+		expect(scriptTag?.getAttribute('data-custom')).toBe('value');
+		expect(scriptTag?.innerHTML).toContain('window[\'hcaptcha_');
+	});
 });

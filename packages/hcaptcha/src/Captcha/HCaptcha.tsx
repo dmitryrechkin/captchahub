@@ -74,9 +74,10 @@ export class HCaptcha implements CaptchaInterface
 
 	/**
 	 * Get captcha form element
+	 * @param {Record<string, string>} [scriptAttributes] - Optional script attributes to add to the script tag
 	 * @returns {React.FC} - Returns captcha form element
 	 */
-	public getCaptchaFormElement(): React.FC
+	public getCaptchaFormElement(scriptAttributes?: Record<string, string>): React.FC
 	{
 		return () =>
 		{
@@ -91,6 +92,7 @@ export class HCaptcha implements CaptchaInterface
 					></div>
 					<input type="hidden" id={captchaRandomElementId} name="h-captcha-response" />
 					<script
+						{...scriptAttributes}
 						dangerouslySetInnerHTML={{
 							// eslint-disable-next-line @typescript-eslint/naming-convention
 							__html: `

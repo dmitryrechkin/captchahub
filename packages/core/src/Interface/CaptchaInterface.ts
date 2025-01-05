@@ -16,7 +16,8 @@ export interface CaptchaInterface
 
 	/**
 	 * Get captcha form element
+	 * @param {Record<string, string>} [scriptAttributes] - Optional script attributes to add to the script tag
 	 * @returns {React.FC} - Returns captcha form element
 	 */
-	getCaptchaFormElement(): React.FC;
+	getCaptchaFormElement(scriptAttributes?: Record<string, string>): React.FC;
 }
