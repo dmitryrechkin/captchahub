@@ -1,7 +1,7 @@
 {
 	"name": "@captchahub/core",
 	"type": "module",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
@@ -16,18 +16,18 @@
 	},
 	"devDependencies": {
 		"@dmitryrechkin/eslint-standard": "^1.0.7",
-		"fix-esm-import-path": "^1.0.1",
-		"dotenv": "^16.4.5",
-		"eslint": "^8.0.0",
-		"eslint-plugin-unused-imports": "^3.0.0",
-		"tsconfig-paths": "^4.2.0",
-		"typescript": "^5.5.3",
-		"vitest": "^0.24.5",
+		"@types/react": "^19.0.0",
+		"dotenv": "^16.4.7",
+		"eslint": "^8.57.1",
+		"eslint-plugin-unused-imports": "^3.2.0",
+		"fix-esm-import-path": "^1.10.1",
 		"shx": "^0.3.4",
-		"@types/react": "^18.0.0"
+		"tsconfig-paths": "^4.2.0",
+		"typescript": "^5.8.2",
+		"vitest": "^0.24.5"
 	},
 	"dependencies": {
-		"react": "^18.3.1",
-		"react-dom": "^18.3.1"
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0"
 	}
 }

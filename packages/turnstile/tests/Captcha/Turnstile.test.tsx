@@ -30,19 +30,20 @@ describe('Turnstile Class', () => {
 	});
 
 	it('renders captcha script correctly', () => {
-		const CaptchaScript = turnstile.getCaptchaScript();
+		const CaptchaScript = turnstile.getCaptchaScript({'async': false});
 		const { container } = render(<CaptchaScript />);
 		const scriptTag = container.querySelector('script');
 		expect(scriptTag).not.toBeNull();
 		expect(scriptTag?.src).toBe('https://challenges.cloudflare.com/turnstile/v0/api.js');
-		expect(scriptTag?.hasAttribute('async')).toBe(true);
+		expect(scriptTag?.hasAttribute('async')).toBe(false);
 		expect(scriptTag?.hasAttribute('defer')).toBe(true);
 	});
 
 	it('renders captcha script with custom attributes', () => {
 		const customAttributes = {
 			'data-astro-rerun': 'true',
-			'data-custom': 'value'
+			'data-custom': 'value',
+			'async': false
 		};
 		const CaptchaScript = turnstile.getCaptchaScript(customAttributes);
 		const { container } = render(<CaptchaScript />);

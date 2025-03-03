@@ -9,15 +9,15 @@ export interface CaptchaInterface
 
 	/**
 	 * Get captcha script
-	 * @param {Record<string, string>} [scriptAttributes] - Optional script attributes to add to the script tag
+	 * @param {Record<string, unknown>} [scriptAttributes] - Optional script attributes to add to the script tag
 	 * @returns {React.FC} - Returns captcha script
 	 */
-	getCaptchaScript(scriptAttributes?: Record<string, string>): React.FC;
+	getCaptchaScript(scriptAttributes?: Record<string, unknown>): React.FC;
 
 	/**
 	 * Get captcha form element
-	 * @param {Record<string, string>} [scriptAttributes] - Optional script attributes to add to the script tag
+	 * @param {Record<string, unknown>} [scriptAttributes] - Optional script attributes to add to the script tag
 	 * @returns {React.FC} - Returns captcha form element
 	 */
-	getCaptchaFormElement(scriptAttributes?: Record<string, string>): React.FC;
+	getCaptchaFormElement(scriptAttributes?: Record<string, unknown>): React.FC;
 }

@@ -54,10 +54,10 @@ export class HCaptcha implements CaptchaInterface
 
 	/**
 	 * Get captcha script
-	 * @param {Record<string, string>} [scriptAttributes] - Optional script attributes to add to the script tag
+	 * @param {Record<string, unknown>} [scriptAttributes] - Optional script attributes to add to the script tag
 	 * @returns {React.FC} - Returns captcha script
 	 */
-	public getCaptchaScript(scriptAttributes?: Record<string, string>): React.FC
+	public getCaptchaScript(scriptAttributes?: Record<string, unknown>): React.FC
 	{
 		return () =>
 		{
@@ -74,10 +74,10 @@ export class HCaptcha implements CaptchaInterface
 
 	/**
 	 * Get captcha form element
-	 * @param {Record<string, string>} [scriptAttributes] - Optional script attributes to add to the script tag
+	 * @param {Record<string, unknown>} [scriptAttributes] - Optional script attributes to add to the script tag
 	 * @returns {React.FC} - Returns captcha form element
 	 */
-	public getCaptchaFormElement(scriptAttributes?: Record<string, string>): React.FC
+	public getCaptchaFormElement(scriptAttributes?: Record<string, unknown>): React.FC
 	{
 		return () =>
 		{
